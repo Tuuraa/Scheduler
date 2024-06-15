@@ -68,7 +68,7 @@ class SheduleItem extends StatelessWidget {
                         style: TextStyle(color: green, fontSize: 14)),
                   ),
                   const SizedBox(width: 15),
-                  Text("${shedule.type}", style: TextStyle(fontSize: 15))
+                  Text("${shedule.type}", style: TextStyle(fontSize: 14))
                 ]),
                 const SizedBox(height: 15),
                 Align(
@@ -95,7 +95,7 @@ class SheduleItem extends StatelessWidget {
             ),
             const Spacer(),
             Text(shedule.getFormattedTime(),
-                style: const TextStyle(fontSize: 16))
+                style: const TextStyle(fontSize: 15))
           ],
         ),
       ),

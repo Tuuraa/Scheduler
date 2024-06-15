@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:html/parser.dart' show parse;
 import 'package:html/dom.dart';
@@ -17,10 +18,16 @@ class MyHttpOverrides extends HttpOverrides {
 Future<List<String>> fetchInstitutes() async {
   const String url =
       'https://elkaf.kubstu.ru/timetable/default/time-table-student-ofo?';
-  final response = await http.get(Uri.parse(url));
+  HttpClient httpClient = HttpClient()
+    ..badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
+  final response = await httpClient
+      .getUrl(Uri.parse(url))
+      .then((request) => request.close());
 
   if (response.statusCode == 200) {
-    var document = parse(response.body);
+    var responseBody = await utf8.decodeStream(response);
+    var document = parse(responseBody);
     List<String> _groups = document
         .getElementsByTagName('option')
         .skip(20)
@@ -30,4 +37,8 @@ Future<List<String>> fetchInstitutes() async {
   } else {
     throw Exception('Failed to load institutes');
   }
+}
+
+void getNewSchedule() {
+  
 }

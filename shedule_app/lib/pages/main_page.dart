@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shedule_app/components/calendar.dart';
 import 'package:shedule_app/components/shedule_item.dart';
+import 'package:shedule_app/config.dart';
 import 'package:shedule_app/pages/choose_group.dart';
 import 'package:shedule_app/pages/search_page.dart';
 import 'package:shedule_app/pr2_schedule/total_list.dart';
