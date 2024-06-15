@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shedule_app/components/shedule_item.dart';
 import 'package:shedule_app/models/day_shedule.dart';
-import 'package:shedule_app/models/shedule.dart';
 import 'package:shedule_app/pr2_schedule/total_list.dart';
 
 class CustomSearch extends StatefulWidget {
@@ -25,7 +23,7 @@ class _CustomSearchState extends State<CustomSearch> {
 
   void updateFoundList(String value) {
     setState(() {
-      searchTitle = value.toLowerCase();
+      searchTitle = value.toLowerCase().trim();
     });
 
     if (value.isEmpty) {
