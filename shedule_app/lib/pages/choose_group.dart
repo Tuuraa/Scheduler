@@ -65,7 +65,7 @@ class _ChooseGroupState extends State<ChooseGroup> {
                 builder: (BuildContext context, SearchController controller) {
                   return SearchBar(
                     controller: controller,
-                    padding: const MaterialStatePropertyAll<EdgeInsets>(
+                    padding: const WidgetStatePropertyAll<EdgeInsets>(
                         EdgeInsets.symmetric(horizontal: 16.0)),
                     onChanged: (value) {
                       updateSearchText(value);

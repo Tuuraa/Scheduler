@@ -105,6 +105,7 @@ class _CustomSearchState extends State<CustomSearch> {
                         itemCount: _foundShc[index].lessonList.length,
                         itemBuilder: (context, lesIndex) {
                           return SheduleItem(
+                            isNow: false,
                             lessonNumber: lesIndex + 1,
                             startAnimation: true,
                             shedule: _foundShc[index].lessonList[lesIndex],

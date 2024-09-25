@@ -25,10 +25,10 @@ List<DaySchedule> even_schedules = [
 ];
 
 WeekSchedule odd_week =
-    WeekSchedule(weekIso: "Нечетная", daysSchedule: odd_shedules);
+    WeekSchedule(weekIso: "Четная", daysSchedule: odd_shedules);
 
 WeekSchedule even_week =
-    WeekSchedule(weekIso: "Четная", daysSchedule: even_schedules);
+    WeekSchedule(weekIso: "Нечетная", daysSchedule: even_schedules);
 
 List<WeekSchedule> total_schedule = [odd_week, even_week];
 

@@ -26,9 +26,7 @@ class Config {
 
   static String getFullUrl() {
     String _tempUrl =
-        'https://elkaf.kubstu.ru/timetable/default/time-table-student-ofo?isk' +
-            'iosk=0&fak_id=516&kurs=${selectedGroup.split("-")[0][1]}&gr=' +
-            '&ugod=2023&semestr=2';
+        'https://elkaf.kubstu.ru/timetable/default/time-table-student-ofo?iskiosk=0&fak_id=516&kurs=${selectedGroup.split("-")[0][1]}&gr=&ugod=2023&semestr=2';
 
     return "";
   }

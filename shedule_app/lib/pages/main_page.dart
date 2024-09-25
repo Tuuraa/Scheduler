@@ -3,15 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shedule_app/components/calendar.dart';
 import 'package:shedule_app/components/shedule_item.dart';
-import 'package:shedule_app/config.dart';
 import 'package:shedule_app/pages/choose_group.dart';
 import 'package:shedule_app/pages/search_page.dart';
 import 'package:shedule_app/pr2_schedule/total_list.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(LaunchApp());
-}
+// void main() {
+//   runApp(LaunchApp());
+// }
 
 class LaunchApp extends StatefulWidget {
   const LaunchApp({super.key});
@@ -21,6 +19,7 @@ class LaunchApp extends StatefulWidget {
 }
 
 class _LaunchAppState extends State<LaunchApp> {
+  List<String> weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
   DateTime? _selectedDay;
   DateTime _focusDay = DateTime.now();
 
@@ -76,9 +75,7 @@ class _LaunchAppState extends State<LaunchApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 247, 247, 247),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 247, 247, 247),
         centerTitle: true,
         title: Text(
           "SCHEDULER",
@@ -122,7 +119,23 @@ class _LaunchAppState extends State<LaunchApp> {
                   .lessons
                   .length,
               itemBuilder: (context, index) {
+
+                String weekIso = total_schedule[getEvenWeek(_focusDay)].weekIso;
+                String day = total_schedule[getEvenWeek(_focusDay)]
+                            .daysSchedule[_focusDay.weekday - 1].day;
+                Duration startLesson = total_schedule[getEvenWeek(_focusDay)]
+                            .daysSchedule[_focusDay.weekday - 1].lessons[index].startLess;
+                Duration endLesson = total_schedule[getEvenWeek(_focusDay)]
+                            .daysSchedule[_focusDay.weekday - 1].lessons[index].endLess;
+                
+                DateTime now = DateTime.now();
+                Duration nowDuration = Duration(hours: now.hour + 3, minutes: now.minute);
+                bool isCurrentLesson = 
+                  weekdays[now.weekday - 1] == day 
+                  && (nowDuration >= startLesson && nowDuration <= endLesson)
+                  && weekIso == getStringWeekNumber().split(' ')[0];
                 return SheduleItem(
+                  isNow: isCurrentLesson,
                   startAnimation: startAnimation,
                   lessonNumber: index + 1,
                   shedule: total_schedule[getEvenWeek(_focusDay)]

@@ -28,6 +28,7 @@ Future<List<String>> fetchInstitutes() async {
   if (response.statusCode == 200) {
     var responseBody = await utf8.decodeStream(response);
     var document = parse(responseBody);
+    print(document);
     List<String> _groups = document
         .getElementsByTagName('option')
         .skip(20)

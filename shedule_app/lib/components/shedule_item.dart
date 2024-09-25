@@ -4,6 +4,7 @@ import 'package:shedule_app/models/shedule.dart';
 class SheduleItem extends StatelessWidget {
   SheduleItem(
       {super.key,
+      required this.isNow,
       required this.lessonNumber,
       required this.startAnimation,
       required this.shedule});
@@ -16,6 +17,7 @@ class SheduleItem extends StatelessWidget {
     }
   }
 
+  final bool isNow;
   final int lessonNumber;
   final Schedule shedule;
   bool startAnimation;
@@ -60,15 +62,15 @@ class SheduleItem extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 20, top: 2, right: 7, bottom: 2),
                     decoration: BoxDecoration(
-                        color: black,
+                        color: isNow ? green : black,
                         borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(20),
                             bottomRight: Radius.circular(20))),
                     child: Text("$lessonNumber",
-                        style: TextStyle(color: green, fontSize: 14)),
+                        style: TextStyle(color: isNow ? black : green, fontSize: 14)),
                   ),
                   const SizedBox(width: 15),
-                  Text("${shedule.type}", style: TextStyle(fontSize: 14))
+                  Text("${shedule.type}", style: TextStyle(fontSize: 15))
                 ]),
                 const SizedBox(height: 15),
                 Align(
