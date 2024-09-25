@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shedule_app/models/shedule.dart';
 
 class SheduleItem extends StatelessWidget {
-  SheduleItem(
-      {super.key,
-      required this.isNow,
-      required this.lessonNumber,
-      required this.startAnimation,
-      required this.shedule});
+  SheduleItem({
+    super.key,
+    required this.isNow,
+    required this.lessonNumber,
+    required this.startAnimation,
+    required this.shedule,
+  });
 
   String truncateString(String text, int maxLength) {
     if (text.length <= maxLength) {
@@ -31,8 +32,7 @@ class SheduleItem extends StatelessWidget {
     return AnimatedContainer(
       curve: Curves.easeInOut,
       duration: Duration(milliseconds: 300 + ((lessonNumber - 1) * 120)),
-      transform:
-          Matrix4.translationValues(startAnimation ? 0 : screenWidth, 0, 0),
+      transform: Matrix4.translationValues(startAnimation ? 0 : screenWidth, 0, 0),
       margin: const EdgeInsets.only(bottom: 7, right: 7, left: 7),
       padding: const EdgeInsets.only(bottom: 10, top: 10),
       alignment: Alignment.center,
@@ -58,36 +58,48 @@ class SheduleItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(children: [
-                  Container(
-                    padding: const EdgeInsets.only(
-                        left: 20, top: 2, right: 7, bottom: 2),
-                    decoration: BoxDecoration(
-                        color: isNow ? green : black,
-                        borderRadius: const BorderRadius.only(
+                  Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(left: 20, top: 2, right: 7, bottom: 2),
+                        decoration: BoxDecoration(
+                          color: isNow ? green : black,
+                          borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(20),
-                            bottomRight: Radius.circular(20))),
-                    child: Text("$lessonNumber",
-                        style: TextStyle(color: isNow ? black : green, fontSize: 14)),
+                            bottomRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Text(
+                          "$lessonNumber",
+                          style: TextStyle(color: isNow ? black : green, fontSize: 14),
+                        ),
+                        
+                      ),
+                    ],
                   ),
                   const SizedBox(width: 15),
-                  Text("${shedule.type}", style: TextStyle(fontSize: 15))
+                  Text("${shedule.type}", style: TextStyle(fontSize: 15)),
                 ]),
                 const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    truncateString(shedule.name, 25),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                    child: Container(
+                      width: 250, // Установите ширину контейнера по вашему усмотрению
+                      child: Text(
+                        shedule.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                        softWrap: true, // Позволяет тексту переноситься
+                        overflow: TextOverflow.visible, // Указывает, что переполненный текст будет виден
+                      ),
                     ),
                   ),
-                ),
                 const SizedBox(height: 5),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child:
-                      Text(shedule.teacherName, style: TextStyle(fontSize: 13)),
+                  child: Text(shedule.teacherName, style: TextStyle(fontSize: 13)),
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -96,8 +108,7 @@ class SheduleItem extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            Text(shedule.getFormattedTime(),
-                style: const TextStyle(fontSize: 15))
+            Text(shedule.getFormattedTime(), style: const TextStyle(fontSize: 15))
           ],
         ),
       ),

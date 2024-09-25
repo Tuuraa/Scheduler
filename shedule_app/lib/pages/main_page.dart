@@ -37,17 +37,27 @@ class _LaunchAppState extends State<LaunchApp> {
     _pageController = PageController(initialPage: _focusDay.weekday - 1);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       setState(() {
+        _selectedDay = _focusDay;
         startAnimation = true;
       });
     });
   }
 
   void setSelectedDay(DateTime? selDay, DateTime focDay) {
+    DateTime nextMonday = DateTime.now().add(Duration(days: 7 - DateTime.now().weekday));
+    bool isNextWeek = focDay.isAfter(nextMonday);
+
     setState(() {
       _selectedDay = selDay;
       _focusDay = focDay;
 
-      _pageController.jumpToPage(focDay.weekday - 1);
+      if (isNextWeek) {
+        _pageController.jumpToPage(focDay.weekday - 1 + 7);
+      }
+      else {
+        _pageController.jumpToPage(focDay.weekday - 1);
+      }
+      
     });
   }
 
