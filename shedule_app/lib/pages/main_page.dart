@@ -82,11 +82,11 @@ class _LaunchAppState extends State<LaunchApp> {
           "SCHEDULER",
           style: GoogleFonts.acme(fontSize: 28),
         ),
-        leading: IconButton(
-          onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ChooseGroup())),
-          icon: const Icon(Icons.bookmark),
-        ),
+        // leading: IconButton(
+        //   onPressed: () => Navigator.push(
+        //       context, MaterialPageRoute(builder: (context) => ChooseGroup())),
+        //   icon: const Icon(Icons.bookmark),
+        // ),
         actions: [
           IconButton(
             onPressed: () => Navigator.push(
