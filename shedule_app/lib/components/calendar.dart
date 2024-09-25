@@ -88,10 +88,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
           return Center(
             child: Text(
               text,
-              style: GoogleFonts.roboto(
-                  fontSize: 15,
+              style: const TextStyle(
+                  fontSize: 14,
                   color: Colors.black,
-                  fontWeight: FontWeight.w400),
+                  fontWeight: FontWeight.w500
+                ),
             ),
           );
         },

@@ -24,7 +24,10 @@ class MyApp extends StatelessWidget {
         Locale('en', '')
       ],
       debugShowCheckedModeBanner: false,
-      home: LaunchApp(),
+      home: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: LaunchApp(),
+      ),
     );
   }
 }
