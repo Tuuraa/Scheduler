@@ -25,6 +25,14 @@ class CustomCalendar extends StatefulWidget {
 }
 
 class _CustomCalendarState extends State<CustomCalendar> {
+
+  DateTime getCurrentMonday() {
+    DateTime date = DateTime.now();
+    int difference = date.weekday - DateTime.monday;
+
+    return date.subtract(Duration(days: difference));
+  }
+
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
@@ -33,7 +41,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
       headerVisible: false,
       daysOfWeekVisible: true,
       focusedDay: widget.focusDay,
-      firstDay: DateTime.now(),
+      firstDay: getCurrentMonday(),
       lastDay: DateTime.now().add(const Duration(days: 14)),
       selectedDayPredicate: (day) {
         return isSameDay(widget.selectedDay, day);
