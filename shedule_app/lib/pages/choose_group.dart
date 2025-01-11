@@ -5,7 +5,7 @@ import 'package:shedule_app/pages/group_info_selected.dart';
 import 'package:shedule_app/parser/parse.dart';
 
 class ChooseGroup extends StatefulWidget {
-  ChooseGroup({super.key});
+  const ChooseGroup({super.key});
 
   @override
   State<ChooseGroup> createState() => _ChooseGroupState();
@@ -21,12 +21,12 @@ class _ChooseGroupState extends State<ChooseGroup> {
       searchText = value.toLowerCase().trim();
     });
 
-    List<String> _temp = _groups
+    List<String> temp = _groups
         .where((elem) => elem.toLowerCase().contains(searchText))
         .toList();
 
     setState(() {
-      _foundGroups = _temp;
+      _foundGroups = temp;
     });
   }
 
@@ -87,7 +87,7 @@ class _ChooseGroupState extends State<ChooseGroup> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        updateGroupShedule(_groups[index]);
+                        updateGroupShedule(_foundGroups[index]);
                       },
                       child: Container(
                         alignment: Alignment.center,

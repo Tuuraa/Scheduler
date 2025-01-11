@@ -6,7 +6,7 @@ class DayOff extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 70),
+      padding: const EdgeInsets.only(top: 70),
       child: Column(
         children: [
           Image.asset(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shedule_app/components/shedule_item.dart';
 import 'package:shedule_app/models/day_shedule.dart';
-import 'package:shedule_app/pr2_schedule/total_list.dart';
+import 'main_page.dart';
 
 class CustomSearch extends StatefulWidget {
   const CustomSearch({super.key});
@@ -12,7 +12,7 @@ class CustomSearch extends StatefulWidget {
 
 class _CustomSearchState extends State<CustomSearch> {
   String searchTitle = "";
-  List<DaySchedule> _shcList = [];
+  final List<DaySchedule> _shcList = [];
   List<DaySchedule> _foundShc = [];
 
   @override
@@ -29,36 +29,36 @@ class _CustomSearchState extends State<CustomSearch> {
     if (value.isEmpty) {
       _foundShc = List.from(_shcList);
     } else {
-      List<DaySchedule> _temp = [];
-      _shcList.forEach((day) {
+      List<DaySchedule> temp = [];
+      for (var day in _shcList) {
         var matchingLessons = day.lessonList.where((schedule) {
           return schedule.name.toLowerCase().contains(searchTitle) ||
               schedule.teacherName.toLowerCase().contains(searchTitle);
         }).toList();
 
         if (matchingLessons.isNotEmpty) {
-          _temp.add(DaySchedule(day: day.day, lessons: matchingLessons));
+          temp.add(DaySchedule(day: day.day, lessons: matchingLessons));
         }
-      });
+      }
 
-      print("TEMP IS $_temp");
+      print("TEMP IS $temp");
       setState(() {
-        _foundShc = _temp;
+        _foundShc = temp;
       });
     }
   }
 
   void _initializeScheduleList() {
-    total_schedule.forEach((week) {
-      week.daysSchedule.forEach((element) {
+    for (var week in total_schedules) {
+      for (var element in week.daysSchedule) {
         DaySchedule temp = DaySchedule(
-            day: element.day + ", ${week.weekIso}",
+            day: "${element.day}, ${week.weekIso}",
             lessons: element.lessonList);
         _shcList.add(temp);
-      });
-    });
+      }
+    }
 
-    _foundShc = List.from(_shcList); // Ensure a new list is assigned
+    _foundShc = List.from(_shcList);
     setState(() {});
   }
 
@@ -78,7 +78,7 @@ class _CustomSearchState extends State<CustomSearch> {
               builder: (BuildContext context, SearchController controller) {
                 return SearchBar(
                   controller: controller,
-                  padding: const MaterialStatePropertyAll<EdgeInsets>(
+                  padding: const WidgetStatePropertyAll<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 16.0)),
                   onChanged: (value) {
                     updateFoundList(value);

@@ -29,17 +29,13 @@ Future<List<String>> fetchInstitutes() async {
     var responseBody = await utf8.decodeStream(response);
     var document = parse(responseBody);
     print(document);
-    List<String> _groups = document
+    List<String> groups = document
         .getElementsByTagName('option')
         .skip(20)
         .map((element) => element.text)
         .toList();
-    return _groups;
+    return groups;
   } else {
     throw Exception('Failed to load institutes');
   }
-}
-
-void getNewSchedule() {
-  
 }

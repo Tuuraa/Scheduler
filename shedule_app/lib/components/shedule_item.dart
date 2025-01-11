@@ -14,7 +14,7 @@ class SheduleItem extends StatelessWidget {
     if (text.length <= maxLength) {
       return text;
     } else {
-      return text.substring(0, maxLength - 3) + '...';
+      return '${text.substring(0, maxLength - 3)}...';
     }
   }
 
@@ -23,8 +23,8 @@ class SheduleItem extends StatelessWidget {
   final Schedule shedule;
   bool startAnimation;
   double screenWidth = 0;
-  static final Color black = Color(0xFF181818);
-  static final Color green = Color.fromRGBO(18, 231, 213, 1);
+  static const Color black = Color(0xFF181818);
+  static const Color green = Color.fromRGBO(18, 231, 213, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -78,12 +78,12 @@ class SheduleItem extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(width: 15),
-                  Text("${shedule.type}", style: TextStyle(fontSize: 15)),
+                  Text(shedule.type, style: const TextStyle(fontSize: 15)),
                 ]),
                 const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
-                    child: Container(
+                    child: SizedBox(
                       width: 250, // Установите ширину контейнера по вашему усмотрению
                       child: Text(
                         shedule.name,
@@ -99,7 +99,7 @@ class SheduleItem extends StatelessWidget {
                 const SizedBox(height: 5),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(shedule.teacherName, style: TextStyle(fontSize: 13)),
+                  child: Text(shedule.teacherName, style: const TextStyle(fontSize: 13)),
                 ),
                 Align(
                   alignment: Alignment.centerLeft,

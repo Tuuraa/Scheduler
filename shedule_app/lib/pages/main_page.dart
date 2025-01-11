@@ -1,3 +1,13 @@
+import 'dart:io';
+
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as html;
+import 'package:shedule_app/config.dart';
+import 'package:shedule_app/models/day_shedule.dart';
+import 'package:shedule_app/models/shedule.dart';
+import 'package:shedule_app/models/week_schedule.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -6,7 +16,9 @@ import 'package:shedule_app/components/day_off.dart';
 import 'package:shedule_app/components/shedule_item.dart';
 import 'package:shedule_app/pages/choose_group.dart';
 import 'package:shedule_app/pages/search_page.dart';
-import 'package:shedule_app/pr2_schedule/total_list.dart';
+import 'package:shedule_app/utils/setup.dart';
+
+List<WeekSchedule> total_schedules = [];
 
 class LaunchApp extends StatefulWidget {
   const LaunchApp({super.key});
@@ -16,7 +28,7 @@ class LaunchApp extends StatefulWidget {
 }
 
 class _LaunchAppState extends State<LaunchApp> {
-  List<String> weekdays = [
+  static List<String> weekdays = [
     "Понедельник",
     "Вторник",
     "Среда",
@@ -35,12 +47,22 @@ class _LaunchAppState extends State<LaunchApp> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _focusDay.weekday - 1);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    _fetchSchedules();
+
+  }
+
+  Future<void> _fetchSchedules() async {
+    try {
+      // Await the result of getSchedule
+      List<WeekSchedule> schedules = await getSchedule();
       setState(() {
+        total_schedules = schedules;  // Update total_schedules when data is fetched
+        startAnimation = true;  // Start the animation after fetching
         _selectedDay = _focusDay;
-        startAnimation = true;
       });
-    });
+    } catch (e) {
+      print('Error fetching schedules: $e');
+    }
   }
 
   void setSelectedDay(DateTime? selDay, DateTime focDay) {
@@ -84,112 +106,235 @@ class _LaunchAppState extends State<LaunchApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "SCHEDULER",
-          style: GoogleFonts.acme(fontSize: 28),
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      centerTitle: true,
+      title: Text(
+        "SCHEDULER",
+        style: GoogleFonts.acme(fontSize: 28),
+      ),
+      leading: IconButton(
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const ChooseGroup())),
+        icon: const Icon(Icons.bookmark),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CustomSearch()),
+          ),
+          icon: const Icon(Icons.search),
         ),
-        // leading: IconButton(
-        //   onPressed: () => Navigator.push(
-        //       context, MaterialPageRoute(builder: (context) => ChooseGroup())),
-        //   icon: const Icon(Icons.bookmark),
-        // ),
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const CustomSearch()),
-            ),
-            icon: const Icon(Icons.search),
+      ],
+    ),
+    body: Column(
+      children: [
+        CustomCalendar(
+          onSelectedDayChange: (sDay, fDay) => setSelectedDay(sDay, fDay),
+          focusDay: _focusDay,
+          selectedDay: _selectedDay,
+        ),
+        const SizedBox(height: 5),
+        Text(
+          "Сегодня: ${DateFormat('d MMMM', 'ru').format(DateTime.now())}, ${getStringWeekNumber()}",
+          style: const TextStyle(
+            fontSize: 17,
+            color: Color.fromRGBO(0, 0, 0, 0.8),
           ),
-        ],
-      ),
-      body: Column(
-        children: [
-          CustomCalendar(
-            onSelectedDayChange: (sDay, fDay) => setSelectedDay(sDay, fDay),
-            focusDay: _focusDay,
-            selectedDay: _selectedDay,
-          ),
-          const SizedBox(height: 5),
-          Text(
-            "Сегодня: ${DateFormat('d MMMM', 'ru').format(DateTime.now())}, ${getStringWeekNumber()}",
-            style: const TextStyle(
-              fontSize: 17,
-              color: Color.fromRGBO(0, 0, 0, 0.8),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: PageView.builder(
-              itemCount: 14,
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  var newDate = DateTime.now()
-                      .subtract(Duration(days: DateTime.now().weekday - 1 - index));
-                  _focusDay = newDate;
-                  _selectedDay = newDate;
-                });
-              },
-              itemBuilder: (context, index) {
-                DateTime pageDay = DateTime.now()
+        ),
+        const SizedBox(height: 20),
+        Expanded(
+          child: PageView.builder(
+            itemCount: 14,
+            controller: _pageController,
+            onPageChanged: (index) {
+              setState(() {
+                var newDate = DateTime.now()
                     .subtract(Duration(days: DateTime.now().weekday - 1 - index));
+                _focusDay = newDate;
+                _selectedDay = newDate;
+              });
+            },
+            itemBuilder: (context, index) {
+              DateTime pageDay = DateTime.now()
+                  .subtract(Duration(days: DateTime.now().weekday - 1 - index));
 
-                List lessons = total_schedule[getEvenWeek(pageDay)]
-                    .daysSchedule[pageDay.weekday - 1]
-                    .lessons;
-                if (lessons.isEmpty) {
-                  return const DayOff();
-                }
-                return Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: lessons.length,
-                        itemBuilder: (context, ind) {
-                          Duration startLesson = lessons[ind].startLess;
-                          Duration endLesson = lessons[ind].endLess;
+              if (total_schedules.isEmpty) {
+                return const DayOff();
+              }
 
-                          DateTime now = DateTime.now();
-                          Duration nowDuration =
-                              Duration(hours: now.hour + 3, minutes: now.minute);
-                          bool isCurrentLesson =
-                              weekdays[pageDay.weekday - 1] ==
-                                  weekdays[now.weekday - 1] &&
-                                  (nowDuration >= startLesson &&
-                                      nowDuration <= endLesson) &&
-                                  total_schedule[getEvenWeek(pageDay)]
-                                          .weekIso ==
-                                      getStringWeekNumber().split(' ')[0];
+              int evenWeek = getEvenWeek(pageDay);
+              if (evenWeek < 0 || evenWeek >= total_schedules.length) {
+                return const DayOff(); 
+              }
+              var less = total_schedules[evenWeek].daysSchedule;
+              List<Schedule> lessons = [];
+              //[pageDay.weekday - 1]
+                  // .lessons;
 
-                          return SheduleItem(
-                            isNow: isCurrentLesson,
-                            startAnimation: startAnimation,
-                            lessonNumber: ind + 1,
-                            shedule: lessons[ind],
-                          );
-                        },
-                      ),
+              if (less[pageDay.weekday - 1].lessons.isEmpty) {
+                return const DayOff();
+              }
+              else {
+               lessons = less[pageDay.weekday - 1].lessons;
+              }
+             
+
+              return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: lessons.length,
+                      itemBuilder: (context, ind) {
+                        Duration startLesson = lessons[ind].startLess; 
+                        Duration endLesson = lessons[ind].endLess;
+
+                        DateTime now = DateTime.now();
+                        Duration nowDuration =
+                            Duration(hours: now.hour, minutes: now.minute);
+                        bool isCurrentLesson =
+                            weekdays[pageDay.weekday - 1] ==
+                                    weekdays[now.weekday - 1] &&
+                                (nowDuration >= startLesson &&
+                                    nowDuration <= endLesson) &&
+                                total_schedules[evenWeek]
+                                        .weekIso ==
+                                    getStringWeekNumber().split(' ')[0];
+
+                        return SheduleItem(
+                          isNow: isCurrentLesson,
+                          startAnimation: startAnimation,
+                          lessonNumber: ind + 1,
+                          shedule: lessons[ind],
+                        );
+                      },
                     ),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
-          const Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text('Designed by Tura',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-            ),
+        ),
+        const Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text('Designed by Tura',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ),
+  );
+}
+}
+
+
+Schedule addDaySchedule(String currentLesson, List<String> currentLessonsInfo) {
+    var temp = currentLesson.split("/");
+    var lessonTime = temp[0].split(RegExp(r'[(),;\s]+'));
+
+   var startLess = lessonTime[2].split(":");
+   var endLess = lessonTime[4].split(":");
+   //print("object");
+   return Schedule(
+      type: temp[2].trim(), 
+      name: temp[1].trim(), 
+      teacherName:  [currentLessonsInfo[1], currentLessonsInfo[2], currentLessonsInfo[3]].join(" "), 
+      audience: currentLessonsInfo[5], 
+      startLess:Duration(hours: int.parse(startLess[0]), minutes: int.parse(startLess[1])), 
+      endLess: Duration(hours: int.parse(endLess[0]), minutes: int.parse(endLess[1]))
+   );
+  }
+
+  Future<List<WeekSchedule>> getSchedule() async {
+    await SetupData.initData();
+    HttpOverrides.global = MyHttpOverrides();
+    List<WeekSchedule> shedules = [];
+
+    WeekSchedule? week;
+    DaySchedule? day;
+    print(Config.selectedGroup);
+    String url =
+        'https://elkaf.kubstu.ru/timetable/default/time-table-student-ofo?iskiosk=0&fak_id=${Config.getKeyByValueInList(Config.selectedInst)}&kurs=${Config.selectedCurs}&gr=${Config.selectedGroup}&ugod=${DateTime.now().year - 1}&semestr=${Config.selectedSemester}';
+    print(Config.selectedGroup);
+    try {
+      final response = await http.get(Uri.parse(url));
+      print("FETCHING");
+      if (response.statusCode == 200) {
+        var document = html.parse(response.body);
+        int n = 0, d = 1, i = 1;
+        var panelTitleElements = document.getElementsByClassName('panel-title');
+        for (var item in panelTitleElements) {
+
+          var panelCollapseElements = document.getElementById('collapse_n_${n}_d_${d}_i_${i}')?.getElementsByClassName("panel-body");
+          var currentLessonsInfo = panelCollapseElements?.first.text.replaceAll(RegExp(r'\s+'), ' ').trim().split(" ");
+          
+          final String currentWeekType;
+          final String currentDay;
+          final String currentLesson = item.text.trim();
+          if (!["Нечетная неделя", "Четная неделя"].contains(currentLesson)) {
+            if (!weekdays.contains(currentLesson)) {
+              if (week != null && day != null && currentLessonsInfo != null) {
+                day.lessonList.add(addDaySchedule(currentLesson, currentLessonsInfo));
+                print('collapse_n_${n}_d_${d}_i_${i}');
+                i+=1;
+              }
+            }
+            else {
+              if (day != null){
+                //print("added day ${day.day}");
+                week?.daysSchedule.add(day);
+                day = null;
+                d+=1;
+                i=1;
+              }
+
+              currentDay = currentLesson;
+              day = DaySchedule(day: currentDay, lessons: []);
+            }
+          }
+          else {
+            if (week != null){
+              if (day != null) {
+                week.daysSchedule.add(day);
+              }
+              shedules.add(week);
+              for(int i = week.daysSchedule.length; i < 7; i++) {
+                week.daysSchedule.add(DaySchedule(day: weekdays[i], lessons: []));
+              }
+              week = null;
+            }
+            currentWeekType = currentLesson.split(" ")[0];
+            n+=1;
+            d=1;
+            i=1;
+            week = WeekSchedule(weekIso: currentWeekType, daysSchedule: []);
+          }
+        }
+        if (week != null){
+          for(int i = week.daysSchedule.length; i < 7; i++) {
+                week.daysSchedule.add(DaySchedule(day: weekdays[i], lessons: []));
+            }
+          shedules.add(week);
+        }
+
+        return shedules.reversed.toList();
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+    return [];
+  }
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

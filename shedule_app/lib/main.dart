@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shedule_app/pages/main_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shedule_app/utils/setup.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -12,18 +15,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      localizationsDelegates: [
+    return MaterialApp(
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('ru', ''),
         Locale('en', '')
       ],
       debugShowCheckedModeBanner: false,
-      home: LaunchApp(),
+      theme: ThemeData(
+        primaryColor: Colors.black
+      ),
+      home: const LaunchApp(),
     );
   }
 }

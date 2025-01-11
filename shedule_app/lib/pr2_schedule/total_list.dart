@@ -30,5 +30,5 @@ WeekSchedule odd_week =
 WeekSchedule even_week =
     WeekSchedule(weekIso: "Нечетная", daysSchedule: even_schedules);
 
-List<WeekSchedule> total_schedule = [odd_week, even_week];
+List<WeekSchedule> total_schedule = [];
 

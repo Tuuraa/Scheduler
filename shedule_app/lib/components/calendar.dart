@@ -6,19 +6,18 @@ import 'package:table_calendar/table_calendar.dart';
 // ignore: must_be_immutable
 class CustomCalendar extends StatefulWidget {
   CustomCalendar(
-      {Key? key,
+      {super.key,
       required this.focusDay,
       required this.selectedDay,
-      required this.onSelectedDayChange})
-      : super(key: key);
+      required this.onSelectedDayChange});
 
   DateTime? selectedDay;
   DateTime focusDay;
 
   void Function(DateTime, DateTime)? onSelectedDayChange;
 
-  static final Color black = Color(0xFF181818);
-  static final Color green = Color.fromRGBO(18, 231, 213, 1);
+  static final Color black = const Color(0xFF181818);
+  static final Color green = const Color.fromRGBO(18, 231, 213, 1);
 
   @override
   State<CustomCalendar> createState() => _CustomCalendarState();
@@ -54,7 +53,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             alignment: Alignment.center,
             child: Text(
               '${date.day}',
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
           );
         },
@@ -64,7 +63,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             alignment: Alignment.center,
             child: Text(
               '${date.day}',
-              style: TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 17),
             ),
           );
         },
