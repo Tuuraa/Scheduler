@@ -1,0 +1,48 @@
+name: sheduler
+description: "A new Flutter project."
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  flutter_native_splash: ^2.4.0
+  google_fonts: ^6.2.1
+  shared_preferences: ^2.3.5
+  table_calendar: ^3.1.1
+  http: ^1.2.2
+  intl: ^0.19.0
+  url_launcher: ^6.0.20
+  html: ^0.15.5
+  dropdown_button2: ^2.3.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/logo.png
+    - assets/images/github_logo.png
+    - assets/images/sleeping_man.png
+    - assets/images/icon.png
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo.png
+  android_gravity: fill 
+  ios_content_mode: scaleAspectFill 
+  web_image_mode: center 
+  android_12:
+    image: assets/images/logo.png
+    color: "#ffffff"  

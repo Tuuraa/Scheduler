@@ -1,0 +1,919 @@
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+
+    
+<style>
+    body {
+        background: linear-gradient(to bottom, #FFFFFF, #509BC6);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+
+    .navbar-inverse {
+        background-color: #4C97C2;
+    }
+
+    .navbar-inverse a {
+        color: white !important;
+    }
+
+    .navbar-inverse a:hover {
+        color: #D0E4EE !important;
+    }
+
+    .navbar-inverse .navbar-nav > .active > a {
+        background-color: #4C97C2;
+        color: #5FCCF6 !important;
+    }
+
+    navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+        background-color: #4C97C2;
+        color: #5FCCF6 !important;
+    }
+
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background-color: #3C87B2;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border-color: #4C97C2;
+    }
+
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        border-color: #4C97C2;
+    }
+
+    .navbar-inverse {
+        border-color: #4C97C2;
+    }
+    /*----------------------------------------------------------------------------------------------------*/
+</style>
+
+<nav id="w0" class="navbar-inverse navbar-fixed-top navbar"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="https://kubstu.ru/s-7">КубГТУ</a></div><div id="w0-collapse" class="collapse navbar-collapse"><ul id="w1" class="navbar-nav navbar-right nav"><li class="active"><a href="/timetable/default/prev-to-time-table-student-ofo?active=1&amp;iskiosk=0">Расписание занятий ОФО</a></li>
+<li><a href="/timetable/default/prev-to-time-table-student-zfo?iskiosk=0">Расписание занятий ЗФО</a></li>
+<li><a href="/transorder/default/showmustgoon?shedule_type=1&amp;iskiosk=0">Онлайн-занятия</a></li>
+<li><a href="/transorder/default/showmustgoon?shedule_type=2&amp;iskiosk=0">Онлайн-аттестация</a></li></ul></div></div></nav>
+<div class="container" style="padding-top: 57px;">
+
+    <div style="margin-top: 10px; margin-bottom: 10px;">
+
+        <form id="filters_form" action="/timetable/default/time-table-student-ofo" method="get">
+<input type="hidden" name="iskiosk" value="0">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group field-nal_select_fak_id required">
+<label class="control-label" for="nal_select_fak_id">Институт/Факультет</label>
+<select id="nal_select_fak_id" class="form-control select2-hidden-accessible" name="fak_id" onchange="fak_id_change()" aria-required="true" data-s2-options="s2options_d6851687" data-krajee-select2="select2_62e92ee4" style="display:none" tabindex="-1" aria-hidden="true">
+<option value="">Выберите факультет/институт</option>
+<option value="495">Институт нефти, газа и энергетики</option>
+<option value="516" selected="">Институт компьютерных систем и информационной безопасности</option>
+<option value="490">Институт пищевой и перерабатывающей промышленности</option>
+<option value="29">Институт экономики, управления и бизнеса</option>
+<option value="538">Институт строительства и транспортной инфраструктуры</option>
+<option value="539">Институт механики, робототехники, инженерии транспортных и технических систем</option>
+<option value="540">Институт фундаментальных наук</option>
+<option value="541">Инженерно-технологический колледж</option>
+<option value="34">Подготовительное отделение для иностранных граждан</option>
+<option value="721">Высшая инженерная школа</option>
+<option value="50">Новороссийский политехнический институт</option>
+<option value="52">Армавирский механико-технологический институт</option>
+</select><span class="select2 select2-container select2-container--krajee" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-nal_select_fak_id-container"><span class="select2-selection__rendered" id="select2-nal_select_fak_id-container" title="Институт компьютерных систем и информационной безопасности">Институт компьютерных систем и информационной безопасности</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+<div class="help-block"></div>
+</div>            </div>
+            <div class="col-md-2">
+                <div class="form-group field-nal_select_kurs required">
+<label class="control-label" for="nal_select_kurs">Курс</label>
+<select id="nal_select_kurs" class="form-control select2-hidden-accessible" name="kurs" onchange="kurs_change()" aria-required="true" data-s2-options="s2options_d6851687" data-krajee-select2="select2_bca4b53d" style="display:none" tabindex="-1" aria-hidden="true">
+<option value="">Выберите курс</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4" selected="">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select><span class="select2 select2-container select2-container--krajee" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-nal_select_kurs-container"><span class="select2-selection__rendered" id="select2-nal_select_kurs-container" title="4">4</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+<div class="help-block"></div>
+</div>            </div>
+            <div class="col-md-2">
+                <div class="form-group field-nal_select_gr">
+<label class="control-label" for="nal_select_gr">Группа</label>
+<select id="nal_select_gr" class="form-control select2-hidden-accessible" name="gr" onchange="gr_change()" data-s2-options="s2options_d6851687" data-krajee-select2="select2_ac85135d" style="display:none" tabindex="-1" aria-hidden="true">
+<option value="">Выберите группу</option>
+<option value="21-АО-ИБ1">21-АО-ИБ1</option>
+<option value="21-АО-ИВТ1">21-АО-ИВТ1</option>
+<option value="21-АО-УТС1">21-АО-УТС1</option>
+<option value="21-К-АС1">21-К-АС1</option>
+<option value="21-К-АС2">21-К-АС2</option>
+<option value="21-КБ-ИБ1">21-КБ-ИБ1</option>
+<option value="21-КБ-ИБ2">21-КБ-ИБ2</option>
+<option value="21-КБ-ИВ1">21-КБ-ИВ1</option>
+<option value="21-КБ-ПИ1">21-КБ-ПИ1</option>
+<option value="21-КБ-ПИ2">21-КБ-ПИ2</option>
+<option value="21-КБ-ПР1">21-КБ-ПР1</option>
+<option value="21-КБ-ПР2" selected="">21-КБ-ПР2</option>
+<option value="21-КБ-УС1">21-КБ-УС1</option>
+<option value="21-К-КБ1">21-К-КБ1</option>
+<option value="21-К-КБ2">21-К-КБ2</option>
+</select><span class="select2 select2-container select2-container--krajee" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-nal_select_gr-container"><span class="select2-selection__rendered" id="select2-nal_select_gr-container" title="21-КБ-ПР2">21-КБ-ПР2</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+<div class="help-block"></div>
+</div>            </div>
+        </div>
+        <input type="number" name="ugod" value="2024" hidden="">
+        <input type="number" name="semestr" value="2" hidden="">
+
+        </form>
+    </div>
+
+</div>
+
+
+<div id="accordion_1846" aria-multiselectable="true">
+    <div class="text-center" style="margin-bottom: 10px;">
+        <a class="btn btn-primary btn-flat btn-bottom-space" href="/timetable/default/time-table-student-ofo?iskiosk=0&amp;fak_id=516&amp;kurs=4&amp;gr=21-%D0%9A%D0%91-%D0%9F%D0%A02&amp;ugod=2023&amp;semestr=2">2023 - 2024 / 2 сем</a>        <a class="btn btn-primary btn-flat btn-bottom-space" href="/timetable/default/time-table-student-ofo?iskiosk=0&amp;fak_id=516&amp;kurs=4&amp;gr=21-%D0%9A%D0%91-%D0%9F%D0%A02&amp;ugod=2024&amp;semestr=1">2024 - 2025 / 1 сем</a>        <a class="btn btn-primary btn-flat btn-bottom-space  btn-lg" href="/timetable/default/time-table-student-ofo?iskiosk=0&amp;fak_id=516&amp;kurs=4&amp;gr=21-%D0%9A%D0%91-%D0%9F%D0%A02&amp;ugod=2024&amp;semestr=2">2024 - 2025 / 2 сем</a>    </div>
+</div>
+
+<div class="container" style="margin-bottom: 15px;">
+        <p>График занятий: 13.01.2025 - 06.04.2025</p>
+    <p style="font-style: normal;">Учебный год: 2024 - 2025; Семестр: 2; Текущая неделя: четная; День недели: Понедельник;</p>
+    <div class="row">
+                    <div class="col-md-6 ned-box">
+                <div class="panel panel-info" style="margin-bottom: 7px;">
+                    <div class="panel-heading" role="tab" id="heading_n_1">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" href="#collapse_n_1" aria-expanded="true" aria-controls="collapse_n_1">
+                                <p style="margin-bottom: 0;"><strong>Нечетная неделя</strong></p>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse_n_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1">
+                        <div class="panel-body">
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_1_d_1">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_1" aria-expanded="true" aria-controls="collapse_n_1_d_1" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Понедельник</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_1_d_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1_d_1" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_1_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_1_i_1" aria-expanded="true" aria-controls="collapse_n_1_d_1_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">4 пара (13:20 - 14:50) / Теория систем и системный анализ / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_1_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_1_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Терещенко Жанна Анатольевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_1_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_1_i_2" aria-expanded="true" aria-controls="collapse_n_1_d_1_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Теория систем и системный анализ / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_1_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_1_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Терещенко Жанна Анатольевна</p>
+                                                            <p><strong>Аудитория:</strong> К-322</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_1_i_3">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_1_i_3" aria-expanded="true" aria-controls="collapse_n_1_d_1_i_3">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">6 пара (16:40 - 18:10) / Теория систем и системный анализ / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_1_i_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_1_i_3">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Терещенко Жанна Анатольевна</p>
+                                                            <p><strong>Аудитория:</strong> К-322</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_1_d_2">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_2" aria-expanded="true" aria-controls="collapse_n_1_d_2" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Вторник</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_1_d_2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1_d_2" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_2_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_2_i_1" aria-expanded="true" aria-controls="collapse_n_1_d_2_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Информационная безопасность / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_2_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_2_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Оганесян Левон Левонович</p>
+                                                            <p><strong>Аудитория:</strong> К-208</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_2_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_2_i_2" aria-expanded="true" aria-controls="collapse_n_1_d_2_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">6 пара (16:40 - 18:10) / Информационная безопасность / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_2_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_2_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Оганесян Левон Левонович</p>
+                                                            <p><strong>Аудитория:</strong> К-208</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_1_d_3">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_3" aria-expanded="true" aria-controls="collapse_n_1_d_3" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Среда</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_1_d_3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1_d_3" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_3_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_3_i_1" aria-expanded="true" aria-controls="collapse_n_1_d_3_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Развертывание и интеграция программных систем / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_3_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_3_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Зайков Владимир Полиевктович</p>
+                                                            <p><strong>Аудитория:</strong> К-304</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_3_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_3_i_2" aria-expanded="true" aria-controls="collapse_n_1_d_3_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">6 пара (16:40 - 18:10) / Развертывание и интеграция программных систем / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_3_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_3_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Зайков Владимир Полиевктович</p>
+                                                            <p><strong>Аудитория:</strong> К-304</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_1_d_4">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_4" aria-expanded="true" aria-controls="collapse_n_1_d_4" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Четверг</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_1_d_4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1_d_4" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_4_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_4_i_1" aria-expanded="true" aria-controls="collapse_n_1_d_4_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">4 пара (13:20 - 14:50) / Безопасность жизнедеятельности / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_4_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_4_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Короткова Татьяна Германовна</p>
+                                                            <p><strong>Аудитория:</strong> Г-137</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_4_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_4_i_2" aria-expanded="true" aria-controls="collapse_n_1_d_4_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Безопасность жизнедеятельности / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_4_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_4_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Короткова Татьяна Германовна</p>
+                                                            <p><strong>Аудитория:</strong> Г-137</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_1_d_5">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_5" aria-expanded="true" aria-controls="collapse_n_1_d_5" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Пятница</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_1_d_5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1_d_5" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_5_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_5_i_1" aria-expanded="true" aria-controls="collapse_n_1_d_5_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Информационная безопасность / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_5_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_5_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Оганесян Левон Левонович</p>
+                                                            <p><strong>Аудитория:</strong> К-247</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_5_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_5_i_2" aria-expanded="true" aria-controls="collapse_n_1_d_5_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">6 пара (16:40 - 18:10) / Проектирование программных комплексов / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_5_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_5_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-321</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_5_i_3">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_5_i_3" aria-expanded="true" aria-controls="collapse_n_1_d_5_i_3">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">7 пара (18:20 - 19:50) / Развертывание и интеграция программных систем / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_5_i_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_5_i_3">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Зайков Владимир Полиевктович</p>
+                                                            <p><strong>Аудитория:</strong> К-304</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_1_d_6">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_6" aria-expanded="true" aria-controls="collapse_n_1_d_6" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Суббота</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_1_d_6" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_1_d_6" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_6_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_6_i_1" aria-expanded="true" aria-controls="collapse_n_1_d_6_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">3 пара (11:20 - 12:50) / Проектирование программных комплексов / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_6_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_6_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-321</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_6_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_6_i_2" aria-expanded="true" aria-controls="collapse_n_1_d_6_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">4 пара (13:20 - 14:50) / Проектирование программных комплексов / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_6_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_6_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_1_d_6_i_3">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_1_d_6_i_3" aria-expanded="true" aria-controls="collapse_n_1_d_6_i_3">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Проектирование программных комплексов / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_1_d_6_i_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_1_d_6_i_3">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="col-md-6 ned-box">
+                <div class="panel panel-info" style="margin-bottom: 7px;">
+                    <div class="panel-heading" role="tab" id="heading_n_2">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" href="#collapse_n_2" aria-expanded="true" aria-controls="collapse_n_2">
+                                <p style="margin-bottom: 0;"><strong>Четная неделя</strong></p>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse_n_2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_2">
+                        <div class="panel-body">
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_2_d_1">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_1" aria-expanded="true" aria-controls="collapse_n_2_d_1">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; color: #00A65A;">Понедельник</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_2_d_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_2_d_1">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_1_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_1_i_1" aria-expanded="false" aria-controls="collapse_n_2_d_1_i_1" class="collapsed">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; color: #00A65A;">3 пара (11:20 - 12:50) / Теория систем и системный анализ / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_1_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_1_i_1" aria-expanded="false" style="height: 0px;">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Терещенко Жанна Анатольевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_1_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_1_i_2" aria-expanded="true" aria-controls="collapse_n_2_d_1_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; color: #00A65A;">4 пара (13:20 - 14:50) / Теория систем и системный анализ / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_1_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_1_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Терещенко Жанна Анатольевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_1_i_3">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_1_i_3" aria-expanded="true" aria-controls="collapse_n_2_d_1_i_3">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; color: #00A65A;">5 пара (15:00 - 16:30) / Теория систем и системный анализ / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_1_i_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_1_i_3">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Терещенко Жанна Анатольевна</p>
+                                                            <p><strong>Аудитория:</strong> К-322</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_2_d_2">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_2" aria-expanded="true" aria-controls="collapse_n_2_d_2" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Вторник</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_2_d_2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_2_d_2" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_2_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_2_i_1" aria-expanded="true" aria-controls="collapse_n_2_d_2_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Безопасность жизнедеятельности / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_2_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_2_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Короткова Татьяна Германовна</p>
+                                                            <p><strong>Аудитория:</strong> А-625</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_2_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_2_i_2" aria-expanded="true" aria-controls="collapse_n_2_d_2_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">6 пара (16:40 - 18:10) / Безопасность жизнедеятельности / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_2_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_2_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Короткова Татьяна Германовна</p>
+                                                            <p><strong>Аудитория:</strong> А-625</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_2_d_4">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_4" aria-expanded="true" aria-controls="collapse_n_2_d_4" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Четверг</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_2_d_4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_2_d_4" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_4_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_4_i_1" aria-expanded="true" aria-controls="collapse_n_2_d_4_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">4 пара (13:20 - 14:50) / Информационная безопасность / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_4_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_4_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Оганесян Левон Левонович</p>
+                                                            <p><strong>Аудитория:</strong> К-247</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_4_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_4_i_2" aria-expanded="true" aria-controls="collapse_n_2_d_4_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Информационная безопасность / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_4_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_4_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Оганесян Левон Левонович</p>
+                                                            <p><strong>Аудитория:</strong> К-247</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_2_d_5">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_5" aria-expanded="true" aria-controls="collapse_n_2_d_5" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Пятница</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_2_d_5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_2_d_5" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_5_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_5_i_1" aria-expanded="true" aria-controls="collapse_n_2_d_5_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Развертывание и интеграция программных систем / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_5_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_5_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Зайков Владимир Полиевктович</p>
+                                                            <p><strong>Аудитория:</strong> К-321</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_5_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_5_i_2" aria-expanded="true" aria-controls="collapse_n_2_d_5_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">6 пара (16:40 - 18:10) / Развертывание и интеграция программных систем / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_5_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_5_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Зайков Владимир Полиевктович</p>
+                                                            <p><strong>Аудитория:</strong> К-321</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_5_i_3">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_5_i_3" aria-expanded="true" aria-controls="collapse_n_2_d_5_i_3">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">7 пара (18:20 - 19:50) / Проектирование программных комплексов / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_5_i_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_5_i_3">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                    <div class="panel-heading" role="tab" id="heading_n_2_d_6">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_6" aria-expanded="true" aria-controls="collapse_n_2_d_6" class="">
+                                                <p style="margin-bottom: 0;"><span style="font-style: normal; ">Суббота</span></p>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse_n_2_d_6" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_n_2_d_6" aria-expanded="true" style="">
+                                        <div class="panel-body">
+
+                                                                                                                                                                                        <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_6_i_1">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_6_i_1" aria-expanded="true" aria-controls="collapse_n_2_d_6_i_1">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">3 пара (11:20 - 12:50) / Проектирование программных комплексов / Лекции</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_6_i_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_6_i_1">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-321</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                    <p><strong>В лекционном потоке:</strong> Да</p>
+                                                                                                                        <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_6_i_2">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_6_i_2" aria-expanded="true" aria-controls="collapse_n_2_d_6_i_2">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">4 пара (13:20 - 14:50) / Проектирование программных комплексов / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_6_i_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_6_i_2">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                            <div class="panel panel-info" style="margin-bottom: 7px;">
+                                                    <div class="panel-heading" role="tab" id="heading_n_2_d_6_i_3">
+                                                        <h4 class="panel-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse_n_2_d_6_i_3" aria-expanded="true" aria-controls="collapse_n_2_d_6_i_3">
+                                                                <p style="margin-bottom: 0;"><span style="font-size: 0.8em; font-weight: bold; ">5 пара (15:00 - 16:30) / Проектирование программных комплексов / Лабораторные занятия</span></p>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_n_2_d_6_i_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_n_2_d_6_i_3">
+                                                        <div class="panel-body">
+                                                            <p><strong>Преподаватель:</strong> Савинская Дина Николаевна</p>
+                                                            <p><strong>Аудитория:</strong> К-301</p>
+                                                                                                                                                                                                <p><strong>Период:</strong> с 1 по 12 неделю</p>
+                                                                                                                                                                                                                                                                                                                <p><strong>Примечание:</strong> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+</div>
+
+
+
+<script>
+    // после загрузки всей страницы
+    function afterDocReady() {
+
+    }
+
+    // при изменении факультета
+    function fak_id_change() {
+        $('#filters_form').submit();
+    }
+
+    // при изменении курса
+    function kurs_change() {
+        $('#filters_form').submit();
+    }
+
+    // при изменении группы
+    function gr_change() {
+        // самбитим форму
+        $('#filters_form').submit();
+    }
+
+    if (!Array.prototype.some) {
+        Array.prototype.some = function(o) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == o) {
+                    return true;
+                }
+                return false;
+            }
+        }
+    }
+
+</script>
+
+<script>
+    function click(e) {
+        if (document.all) {    // IE
+            if (event.button == 2) {    // Чтобы отключить левую кнопку поставьте цифру 1
+                return false;}
+        }
+        if (document.layers) { // NC
+            if (e.which == 3) {
+                return false;}
+        }
+    }
+    if (document.layers) {
+        document.captureEvents(Event.MOUSEDOWN);
+    }
+    document.onmousedown=click;
+    document.oncontextmenu=function(e){
+        return false
+    };
+</script>
+
+
+<script src="/assets/f9d4756/jquery.js"></script>
+<script src="/assets/b7a48f62/js/bootstrap.js"></script>
+<script src="/assets/2f82829e/yii.js"></script>
+<script src="/assets/b6473375/js/select2.full.min.js"></script>
+<script src="/assets/b6473375/js/select2-krajee.min.js"></script>
+<script src="/assets/b6473375/js/i18n/ru.js"></script>
+<script src="/assets/b65a03bc/js/kv-widgets.min.js"></script>
+<script src="/assets/2f82829e/yii.validation.js"></script>
+<script src="/assets/2f82829e/yii.activeForm.js"></script>
+<script src="/assets/e67e4780/js/adminlte.min.js"></script>
+<script>jQuery(function ($) {
+jQuery&&jQuery.pjax&&(jQuery.pjax.defaults.maxCacheLength=0);
+if (jQuery('#nal_select_fak_id').data('select2')) { jQuery('#nal_select_fak_id').select2('destroy'); }
+jQuery.when(jQuery('#nal_select_fak_id').select2(select2_62e92ee4)).done(initS2Loading('nal_select_fak_id','s2options_d6851687'));
+
+if (jQuery('#nal_select_kurs').data('select2')) { jQuery('#nal_select_kurs').select2('destroy'); }
+jQuery.when(jQuery('#nal_select_kurs').select2(select2_bca4b53d)).done(initS2Loading('nal_select_kurs','s2options_d6851687'));
+
+if (jQuery('#nal_select_gr').data('select2')) { jQuery('#nal_select_gr').select2('destroy'); }
+jQuery.when(jQuery('#nal_select_gr').select2(select2_ac85135d)).done(initS2Loading('nal_select_gr','s2options_d6851687'));
+
+jQuery('#filters_form').yiiActiveForm([{"id":"studentfilterform-fak_id","name":"fak_id","container":".field-nal_select_fak_id","input":"#nal_select_fak_id","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо заполнить «Институт/Факультет»."});yii.validation.number(value, messages, {"pattern":/^\s*[+-]?\d+\s*$/,"message":"Значение «Институт\/Факультет» должно быть целым числом.","skipOnEmpty":1});}},{"id":"studentfilterform-kurs","name":"kurs","container":".field-nal_select_kurs","input":"#nal_select_kurs","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо заполнить «Курс»."});yii.validation.number(value, messages, {"pattern":/^\s*[+-]?\d+\s*$/,"message":"Значение «Курс» должно быть целым числом.","skipOnEmpty":1});}},{"id":"studentfilterform-gr","name":"gr","container":".field-nal_select_gr","input":"#nal_select_gr","validate":function (attribute, value, messages, deferred, $form) {yii.validation.string(value, messages, {"message":"Значение «Группа» должно быть строкой.","max":30,"tooLong":"Значение «Группа» должно содержать максимум 30 символа.","skipOnEmpty":1});}}], []);
+
+    $( document ).ready(function() {
+        afterDocReady();
+    });
+
+});</script>
+
+</body>
